@@ -16,12 +16,14 @@ jobs:
 
       # Pandocを使用してMarkdownをHTMLに変換
       - name: Convert Markdown to HTML
-        uses: docker://pandoc/core:3-alpine
-        with:
-          args: >-
-            -f markdown
-            -t html
-            -o /data/output/index.html
+        run: |
+          docker run --rm \
+            -v ${{ github.workspace }}/input:/data/input \
+            -v ${{ github.workspace }}/output:/data/output \
+            pandoc/core:3-alpine \
+            -f markdown \
+            -t html \
+            -o /data/output/index.html \
             /data/input/resume.md
 
       # AWS CLIを設定
