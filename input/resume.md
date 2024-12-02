@@ -21,3 +21,8 @@
 
 ~~hogehoge~~
 
+```python
+print("Hello, World!")
+```
+
+`hogehoge`
